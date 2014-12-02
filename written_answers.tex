@@ -25,7 +25,8 @@
 \begin{document}
 \vspace {0.25cm} \noindent
 {\bf Problem B1}
-(4)
+
+\noindent(4)
 The two rows given can be obtained by applying the following row operations respectively: 
 $-2A_1+A_3$ and $0.5(3A_1 - A_3)$. Denoting those two rows as $B_1$ and $B_2$, 
 $A_2$ can be expressed as $2B_1 + 3B_2$. In fact, every subsequent row $A_n$ can be 
@@ -33,9 +34,8 @@ expressed as $nB_1 + (n+1)B_2$.
 
 \vspace {0.25cm} \noindent
 {\bf Problem B3}
-(3)
 
-(4)
+\noindent(4)
 There are no normal magic squares for $n=2$. By the property of magic squares, given 
 $A = \begin{pmatrix}
   a_1 & a_2\cr a_3 & a_4
@@ -49,4 +49,12 @@ which violates the constraint that all the elements must be distinct.
   45 &= 3x_1 + 3 x_2 + 3x_3\\
   15 &= x_1 + x_2 + x_3
 \end{align*}
+
+\vspace {0.25cm} \noindent
+{\bf Extra Credit}
+From the above, we know that the center cell must be 5 and each row and column must add 
+up to 15. Also, $x_1 \neq x_2$, otherwise the cells would have repeat values. Now, without 
+loss of generality, let $x_2 < x_1$. Up to rotation, we can see that the middle element of each 
+row/column can take on the value 9. By performing case analysis on each of the four locations 
+where 9 could be, we see that all solutions are isomorphic up to rotation and reflection.
 \end{document}
