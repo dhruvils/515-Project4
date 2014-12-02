@@ -1,0 +1,51 @@
+\documentclass[12pt]{article}
+\usepackage{amsfonts,amssymb,amsmath}
+%\documentstyle[12pt,amsfonts]{article}
+%\documentstyle{article}
+
+\setlength{\topmargin}{-.5in}
+\setlength{\oddsidemargin}{0 in}
+\setlength{\evensidemargin}{0 in}
+\setlength{\textwidth}{6.5truein}
+\setlength{\textheight}{8.5truein}
+\setcounter{MaxMatrixCols}{15}
+%\input ../basicmath/basicmathmac.tex
+%
+%\input ../adgeomcs/lamacb.tex
+\input ../adgeomcs/mac-new.tex
+\input ../adgeomcs/mathmac-v2.tex
+%\input ../adgeomcs/mac.tex
+%\input ../adgeomcs/mathmac.tex
+
+\def\fseq#1#2{(#1_{#2})_{#2\geq 1}}
+\def\fsseq#1#2#3{(#1_{#3(#2)})_{#2\geq 1}}
+\def\qleq{\sqsubseteq}
+
+%
+\begin{document}
+\vspace {0.25cm} \noindent
+{\bf Problem B1}
+(4)
+The two rows given can be obtained by applying the following row operations respectively: 
+$-2A_1+A_3$ and $0.5(3A_1 - A_3)$. Denoting those two rows as $B_1$ and $B_2$, 
+$A_2$ can be expressed as $2B_1 + 3B_2$. In fact, every subsequent row $A_n$ can be 
+expressed as $nB_1 + (n+1)B_2$. 
+
+\vspace {0.25cm} \noindent
+{\bf Problem B3}
+(3)
+
+(4)
+There are no normal magic squares for $n=2$. By the property of magic squares, given 
+$A = \begin{pmatrix}
+  a_1 & a_2\cr a_3 & a_4
+\end{pmatrix}$
+it must be the case that $a_1 + a_2 = a_1 + a_3$. However, this is equivalent to $a_2 = a_3$, 
+which violates the constraint that all the elements must be distinct.
+\begin{align*}
+  1 + ... + 3^2 &= \frac{2x_1 + 2x_2 - x_3 + 2x_1 - x_2 + 2x_3 - x_1 + 2x_2 + 2x_3 
+  - 2x_1 + x_2 + 4x_3 + x_1 + x_2 + x_3 + 4x_1 + x_2 - 2x_3}{3} + x_1 + x_2 + x_3\\
+  45 &= 3x_1 + 3 x_2 + 3x_3\\
+  15 &= x_1 + x_2 + x_3
+\end{align*}
+\end{document}
