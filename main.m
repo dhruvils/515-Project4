@@ -19,7 +19,7 @@ function main()
     
     %%for 1.3
     %{
-    for n = 4:40
+    for n = 4:20
         for i = 1:n
             for j = 1:n
                 m(i,j) = i + j - 1;
@@ -40,7 +40,7 @@ function main()
     
     %%for 1.5
     %{
-    for n = 4:20
+    for n = 4:4
         val = ((2/25) * (n ^ 2));
         for i = 1:n
             for j = 1:n
@@ -50,8 +50,9 @@ function main()
                 end
             end
         end
+        chol(m)
         ReducedRowEchelonForm(m)
-        rref(m)
+        %rref(m)
     end
     %}
     %After adding the given value to the diagonal elements, we see that the
@@ -76,9 +77,16 @@ function main()
         0 1 -1 0 0 1 -1 0 0 1 -1 0 0 1 -1 0;
         0 0 1 -1 0 0 1 -1 0 0 1 -1 0 0 1 -1;
         ];
+    %{
+    M = [
+        1, 0, 2, 1, 5;
+        1, 1, 5, 2, 7;
+        1, 2, 8, 4, 12;
+        ];
+    %}
     %ReducedRowEchelonForm(M)
     %rref(M)
-    KernelBasis(M);
+    [Z, ~] = KernelBasis(M);
     %}
     %%for 2.2
     %{
@@ -89,8 +97,8 @@ function main()
         ];
     b = [1;2;3];
     A = ReducedRowEchelonFormAugment(M, b)
-    %[rowCount, colCount] = size(A);
-    %GenerateSpecialSolution(A(:, colCount), rowCount, colCount - 1);
+    [~, freelist] = KernelBasis(A);
+    GenerateSpecialSolution(A, freelist);
     %}
     %We see that the above matrix of the form Mx = b has a solution as no
     %pivot is present in b.
@@ -99,16 +107,20 @@ function main()
     %GenerateEqnMatrix(4)
     
     %%for 3.2
-    %TODO - printing the matrix of the basis of Vn
     %{
     for i = 2:6
         M = GenerateEqnMatrix(i);
-        KernelBasis(M)
-        SolutionBasis(M)
+        %ReducedRowEchelonForm(M)
+        %rref(M)
+        [B, ~] = KernelBasis(M);
+        SolutionBasis(B);
     end
     %}
     
     %%for 3.3
-    %M = GenerateMagicSquareMatrix(3);
-    %SolutionBasis(M)
+    %{
+    M = GenerateMagicSquareMatrix(4);
+    [B, ~] = KernelBasis(M);
+    SolutionBasis(B);
+    %}
 end

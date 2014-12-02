@@ -1,6 +1,6 @@
-function KernelBasis(M)
-    %reduced_mat = ReducedRowEchelonForm(M);
-    reduced_mat = rref(M);
+function [B, freelist] = KernelBasis(M)
+    reduced_mat = ReducedRowEchelonForm(M);
+    %reduced_mat = rref(M);
     
     [rowCount, colCount] = size(reduced_mat);
     col_index = 1;
@@ -27,7 +27,7 @@ function KernelBasis(M)
         count = count + 1;
     end
     imat = eye(count - 1);
-    mat_size = size(A,1) + count -1;
+    mat_size = size(A,1) + count - 1;
     mat_count = 1;
     id_count = 1;
     for i = 1:mat_size
@@ -39,7 +39,7 @@ function KernelBasis(M)
             mat_count = mat_count + 1;
         end
     end
-    
+    %{
     index = 1;
     numCols = sqrt(size(B,1));
     for col = 1:size(B,2)
@@ -47,4 +47,5 @@ function KernelBasis(M)
         vec2mat(B(:,col), numCols)
         index = index + 1;
     end
+    %}
 end

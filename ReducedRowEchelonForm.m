@@ -6,13 +6,15 @@ function [m] = ReducedRowEchelonForm(m)
         if colCount < col_index
             return;
         end
-        if m(current_row, col_index) == 0 && current_row == rowCount
+
+        while ~any(m(current_row : end, col_index)) && col_index <= colCount
             col_index = col_index + 1;
         end
+
         if colCount < col_index
             return;
         end
-        max_val = max(abs(m(:, col_index)))
+        
         for row_index = current_row:rowCount + 1
             if row_index == rowCount + 1
                 row_index = current_row;
@@ -21,7 +23,7 @@ function [m] = ReducedRowEchelonForm(m)
             if colCount < col_index
                 return;
             end
-            if m(row_index, col_index) ~= 0 && abs(m(row_index, col_index)) == max_val
+            if m(row_index, col_index) ~= 0
                 break;
             end
         end
@@ -33,14 +35,13 @@ function [m] = ReducedRowEchelonForm(m)
         if m(current_row, col_index) ~= 0
             m(current_row,:) = bsxfun(@rdivide, m(current_row,:), m(current_row, col_index));
         
-        
-        for  i = 1:rowCount
-            if i ~= current_row
-                %Subtract M[i, lead] multiplied by row r from row i
-                temp = bsxfun(@times, m(current_row, :), m(i, col_index));
-                m(i,:) = bsxfun(@minus, m(i,:), temp);
+            for  i = 1:rowCount
+                if i ~= current_row
+                    %Subtract M[i, lead] multiplied by row r from row i
+                    temp = bsxfun(@times, m(current_row, :), m(i, col_index));
+                    m(i,:) = bsxfun(@minus, m(i,:), temp);
+                end
             end
-        end
         end
         col_index = col_index + 1;
     end

@@ -7,7 +7,7 @@ function [m] = ReducedRowEchelonFormAugment(A, b)
         if colCount < col_index
             return;
         end
-        if m(current_row, col_index) == 0 && current_row == rowCount
+        while m(current_row, col_index) == 0 && current_row == rowCount && col_index <= colCount
             col_index = col_index + 1;
         end
         if colCount < col_index
@@ -32,15 +32,14 @@ function [m] = ReducedRowEchelonFormAugment(A, b)
         
         if m(current_row, col_index) ~= 0
             m(current_row,:) = bsxfun(@rdivide, m(current_row,:), m(current_row, col_index));
-        
-        
-        for  i = 1:rowCount
-            if i ~= current_row
-                %Subtract M[i, lead] multiplied by row r from row i
-                temp = bsxfun(@times, m(current_row, :), m(i, col_index));
-                m(i,:) = bsxfun(@minus, m(i,:), temp);
+
+            for  i = 1:rowCount
+                if i ~= current_row
+                    %Subtract M[i, lead] multiplied by row r from row i
+                    temp = bsxfun(@times, m(current_row, :), m(i, col_index));
+                    m(i,:) = bsxfun(@minus, m(i,:), temp);
+                end
             end
-        end
         end
         col_index = col_index + 1;
     end
