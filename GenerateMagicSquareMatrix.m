@@ -40,7 +40,7 @@ function [A] = GenerateMagicSquareMatrix(n)
                 end
             end
         else
-            col_eqn = i - row_eqn;
+            col_eqn = i - row_eqn - 1;
             for j = 1: n^2
                 if mod(j - col_eqn + 1, n) == 1
                     A(i,j) = 1;

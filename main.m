@@ -119,7 +119,9 @@ function main()
     
     %%for 3.3
     %{
-    M = GenerateMagicSquareMatrix(4);
+    M = GenerateMagicSquareMatrix(3)
+    ReducedRowEchelonForm(M)
+    rref(M)
     [B, ~] = KernelBasis(M);
     SolutionBasis(B);
     %}
