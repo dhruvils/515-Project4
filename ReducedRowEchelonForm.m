@@ -7,7 +7,7 @@ function [m] = ReducedRowEchelonForm(m)
             return;
         end
 
-        while ~any(m(current_row : end, col_index)) && col_index <= colCount
+        while col_index <= colCount && ~any(m(current_row : end, col_index)) 
             col_index = col_index + 1;
         end
 
